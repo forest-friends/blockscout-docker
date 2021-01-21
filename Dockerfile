@@ -12,4 +12,4 @@ RUN mix phx.digest
 RUN cd apps/block_scout_web; mix phx.gen.cert blockscout blockscout.local; cd -
 COPY hosts /etc/hosts
 
-CMD [ "mix", "phx.server", "--no-compile"]
+CMD [ "mix", "phx.server"]
