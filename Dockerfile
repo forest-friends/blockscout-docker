@@ -2,7 +2,6 @@ FROM elixir:alpine
 # Please rewrite for production version
 ENV SECRET_KEY_BASE=VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No
 ENV MIX_ENV=prod
-ENV PORT=4000
 
 RUN apk add --no-cache git rust cargo make g++ nodejs npm
 RUN git clone https://github.com/poanetwork/blockscout
@@ -13,4 +12,5 @@ RUN mix phx.digest
 RUN cd apps/block_scout_web; mix phx.gen.cert blockscout blockscout.local; cd -
 COPY hosts /etc/hosts
 
+ENV PORT=4000
 CMD [ "mix", "phx.server", "--no-compile"]
